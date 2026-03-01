@@ -1,0 +1,8 @@
+# pnpm-workspace.yaml
+
+# This file defines the pnpm workspace configuration
+packages:
+  - 'frontend/*'
+  - 'backend/*'
+  - 'jobs/*'
+  - 'db/*'
