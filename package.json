@@ -1,9 +1,1 @@
-{"name": "argos1",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "your-dev-script",
-    "build": "your-build-script",
-    "test": "your-test-script",
-    "lint": "your-lint-script"
-  }
-}
+{\n  "name": "argos1",\n  "version": "1.0.0",\n  "description": "A NestJS backend application",\n  "main": "dist/main.js",\n  "scripts": {\n    "start": "node dist/main.js",\n    "start:dev": "ts-node src/main.ts",\n    "build": "tsc",\n    "format": "prettier --write .",\n    "lint": "eslint . --ext .ts"\n  },\n  "dependencies": {\n    "@nestjs/common": "^10.0.0",\n    "@nestjs/core": "^10.0.0",\n    "@nestjs/platform-express": "^10.0.0",\n    "rxjs": "^7.0.0"\n  },\n  "devDependencies": {\n    "nodemon": "^2.0.0",\n    "typescript": "^5.0.0",\n    "ts-node": "^10.0.0",\n    "eslint": "^8.0.0",\n    "prettier": "^2.0.0"\n  }\n}
