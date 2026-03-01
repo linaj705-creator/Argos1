@@ -1,0 +1,1 @@
+{\n  \"name\": \"argos1\",\n  \"version\": \"1.0.0\",\n  \"dependencies\": {\n    \"@prisma/client\": \"^3.15.0\"\n  },\n  \"devDependencies\": {\n    \"prisma\": \"^3.15.0\"\n  }\n}
