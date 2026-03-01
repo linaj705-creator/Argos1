@@ -1,0 +1,9 @@
+{"name": "argos1",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "your-dev-script",
+    "build": "your-build-script",
+    "test": "your-test-script",
+    "lint": "your-lint-script"
+  }
+}
