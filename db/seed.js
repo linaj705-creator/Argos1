@@ -1,0 +1,1 @@
+const demoData = [\n    { name: 'Sample Item 1', description: 'Description for Sample Item 1', price: 10.0 },\n    { name: 'Sample Item 2', description: 'Description for Sample Item 2', price: 20.0 },\n    { name: 'Sample Item 3', description: 'Description for Sample Item 3', price: 30.0 }\n];\n\nmodule.exports = demoData;\n
