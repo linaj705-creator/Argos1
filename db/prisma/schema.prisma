@@ -1,0 +1,103 @@
+// This is a complete Prisma schema for the Argos1 dotation platform.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int      @id @default(autoincrement())
+  email       String   @unique
+  password    String
+  role        Role     @relation(fields: [roleId], references: [id])
+  roleId      Int
+  employees    Employee[]
+  orders      Order[]
+  auditLogs   AuditLog[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Role {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  users       User[]
+}
+
+model Employee {
+  id          Int      @id @default(autoincrement())
+  name        String
+  userId      Int      @unique
+  user        User     @relation(fields: [userId], references: [id])
+  garments    Garment[]
+  kits        Kit[]
+  deliveries  Delivery[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Garment {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  employeeId  Int      @relation(fields: [employeeId], references: [id])
+  employee    Employee
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Kit {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  employeeId  Int      @relation(fields: [employeeId], references: [id])
+  employee    Employee
+  deliveries  Delivery[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Delivery {
+  id          Int      @id @default(autoincrement())
+  kitId      Int      @relation(fields: [kitId], references: [id])
+  kit        Kit
+  deliveryDate DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model PQRS {
+  id          Int      @id @default(autoincrement())
+  complaint    String
+  userId      Int      @relation(fields: [userId], references: [id])
+  user       User
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  employeeId  Int      @relation(fields: [employeeId], references: [id])
+  employee   Employee
+  orderDate   DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model AuditLog {
+  id          Int      @id @default(autoincrement())
+  action      String
+  userId      Int      @relation(fields: [userId], references: [id])
+  user       User
+  createdAt   DateTime @default(now())
+}
+
+model IntegrationRun {
+  id          Int      @id @default(autoincrement())
+  status      String
+  startTime   DateTime
+  endTime     DateTime
+  createdAt   DateTime @default(now())
+}
